@@ -20,7 +20,7 @@ namespace pokemon_towerdefense
     public partial class Game : Form
     {
         #region Variables Field
-
+        
         Pokeball pokeball = new Pokeball();
         
         // Instance of All Game Timer Form
@@ -59,12 +59,31 @@ namespace pokemon_towerdefense
         bool nextPhase = false;
         int actualPhase = 0;
 
+        // Get Screen Size Resolution
+        Size windowSize = Screen.PrimaryScreen.WorkingArea.Size;
+
         #endregion
 
         public Game()
         {
+            double proportionalWidth = windowSize.Width / 1920.0;
+            double proportionalHeight = windowSize.Height / 1040.0;
+
+            this.PbScreen = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.PbScreen)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // PbScreen
+            // 
+            this.PbScreen.BackColor = System.Drawing.Color.Transparent;
+            this.PbScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PbScreen.Location = new System.Drawing.Point(-5, 0);
+            this.PbScreen.Name = "PbScreen";
+            this.PbScreen.Size = new System.Drawing.Size(this.Width, this.Height);
+            this.PbScreen.TabIndex = 6;
+            this.PbScreen.TabStop = false;
             #region Rectangles
-            
+
             // Background to Simule Retry Button on Game Over
             RoundedRect BackRetryRect = new RoundedRect();
             BackRetryRect.setRect(PbScreen.Width / 2 - (PbScreen.Width / 20), PbScreen.Height / 2 + (PbScreen.Height / 20), PbScreen.Width / 10, PbScreen.Height / 18);
@@ -89,8 +108,7 @@ namespace pokemon_towerdefense
             for (int i = 0; i < 4; i++)
             {
                 RoundedRect rndRect = new RoundedRect();
-                SpeedControlRectangles.Add(rndRect.setRect(PbScreen.Width - (PbScreen.Width/90), PbScreen.Height - (PbScreen.Height/ 50), 65, 60));
-
+                SpeedControlRectangles.Add(rndRect.setRect(Convert.ToInt16(20 * (proportionalWidth) + (80 * (proportionalWidth) * i)), windowSize.Height - (windowSize.Height / 40), Convert.ToInt16(65 * (proportionalWidth)), Convert.ToInt16(60 * (proportionalHeight))));
             }
 
             #endregion
@@ -183,114 +201,113 @@ namespace pokemon_towerdefense
             List<Placement> placements3 = new List<Placement>();
             List<Placement> placements4 = new List<Placement>();
 
-            int placementWidth = 50, placementHeight = 55;
             // SETUP PLACEMENTS 1
-            placements1.Add(new Placement(new Rectangle(724, 455, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(854, 455, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(542, 647, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(724, 345, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(854, 647, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(724, 647, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(724, 227, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1037, 455, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1167, 647, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1037, 647, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1347, 455, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1414, 773, placementWidth, placementHeight)));
-            placements1.Add(new Placement(new Rectangle(1414, 925, placementWidth, placementHeight)));
+            placements1.Add(GetPlacement(724, 600));
+            placements1.Add(GetPlacement(854, 455));
+            placements1.Add(GetPlacement(542, 647));
+            placements1.Add(GetPlacement(724, 345));
+            placements1.Add(GetPlacement(854, 647));
+            placements1.Add(GetPlacement(724, 647));
+            placements1.Add(GetPlacement(724, 227));
+            placements1.Add(GetPlacement(1037, 455));
+            placements1.Add(GetPlacement(1167, 647));
+            placements1.Add(new Placement(new Rectangle(1037, 647));
+            placements1.Add(new Placement(new Rectangle(1347, 455));
+            placements1.Add(new Placement(new Rectangle(1414, 773));
+            placements1.Add(new Placement(new Rectangle(1414, 925));
 
             // SETUP PLACEMENTS 2
-            placements2.Add(new Placement(new Rectangle(50, 565, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(190, 565, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(330, 570, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(700, 430, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(835, 430, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(970, 430, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(1025, 520, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(1025, 610, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(1340, 560, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(1480, 560, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(1620, 560, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(50, 825, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(190, 825, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(330, 825, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(470, 825, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(610, 825, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(775, 875, placementWidth, placementHeight)));
-            placements2.Add(new Placement(new Rectangle(775, 980, placementWidth, placementHeight)));
+            placements2.Add(new Placement(new Rectangle(50, 565));
+            placements2.Add(new Placement(new Rectangle(190, 565));
+            placements2.Add(new Placement(new Rectangle(330, 570));
+            placements2.Add(new Placement(new Rectangle(700, 430));
+            placements2.Add(new Placement(new Rectangle(835, 430));
+            placements2.Add(new Placement(new Rectangle(970, 430));
+            placements2.Add(new Placement(new Rectangle(1025, 520));
+            placements2.Add(new Placement(new Rectangle(1025, 610));
+            placements2.Add(new Placement(new Rectangle(1340, 560));
+            placements2.Add(new Placement(new Rectangle(1480, 560));
+            placements2.Add(new Placement(new Rectangle(1620, 560));
+            placements2.Add(new Placement(new Rectangle(50, 825));
+            placements2.Add(new Placement(new Rectangle(190, 825));
+            placements2.Add(new Placement(new Rectangle(330, 825));
+            placements2.Add(new Placement(new Rectangle(470, 825));
+            placements2.Add(new Placement(new Rectangle(610, 825));
+            placements2.Add(new Placement(new Rectangle(775, 875));
+            placements2.Add(new Placement(new Rectangle(775, 980));
 
             // SETUP PLACEMENTS 3
-            placements3.Add(new Placement(new Rectangle(225, 260, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(225, 155, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(225, 50, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(544, 280, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(684, 280, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(824, 280, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(964, 280, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 50, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 165, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 280, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(544, 560, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(684, 560, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(824, 560, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(964, 560, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 560, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 700, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1104, 840, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1433, 490, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1433, 663, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1580, 663, placementWidth, placementHeight)));
-            placements3.Add(new Placement(new Rectangle(1580, 490, placementWidth, placementHeight)));
+            placements3.Add(new Placement(new Rectangle(225, 260));
+            placements3.Add(new Placement(new Rectangle(225, 155));
+            placements3.Add(new Placement(new Rectangle(225, 50));
+            placements3.Add(new Placement(new Rectangle(544, 280));
+            placements3.Add(new Placement(new Rectangle(684, 280));
+            placements3.Add(new Placement(new Rectangle(824, 280));
+            placements3.Add(new Placement(new Rectangle(964, 280));
+            placements3.Add(new Placement(new Rectangle(1104, 50));
+            placements3.Add(new Placement(new Rectangle(1104, 165));
+            placements3.Add(new Placement(new Rectangle(1104, 280));
+            placements3.Add(new Placement(new Rectangle(544, 560));
+            placements3.Add(new Placement(new Rectangle(684, 560));
+            placements3.Add(new Placement(new Rectangle(824, 560));
+            placements3.Add(new Placement(new Rectangle(964, 560));
+            placements3.Add(new Placement(new Rectangle(1104, 560));
+            placements3.Add(new Placement(new Rectangle(1104, 700));
+            placements3.Add(new Placement(new Rectangle(1104, 840));
+            placements3.Add(new Placement(new Rectangle(1433, 490));
+            placements3.Add(new Placement(new Rectangle(1433, 663));
+            placements3.Add(new Placement(new Rectangle(1580, 663));
+            placements3.Add(new Placement(new Rectangle(1580, 490));
 
             // SETUP PLACEMENTS 4
             // Esquerda-Cima
-            placements4.Add(new Placement(new Rectangle(50, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(190, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(330, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(470, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(610, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(750, 420, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(50, 420));
+            placements4.Add(new Placement(new Rectangle(190, 420));
+            placements4.Add(new Placement(new Rectangle(330, 420));
+            placements4.Add(new Placement(new Rectangle(470, 420));
+            placements4.Add(new Placement(new Rectangle(610, 420));
+            placements4.Add(new Placement(new Rectangle(750, 420));
             // Esquerda-Baixo
-            placements4.Add(new Placement(new Rectangle(50, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(190, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(330, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(470, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(610, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(750, 600, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(50, 600));
+            placements4.Add(new Placement(new Rectangle(190, 600));
+            placements4.Add(new Placement(new Rectangle(330, 600));
+            placements4.Add(new Placement(new Rectangle(470, 600));
+            placements4.Add(new Placement(new Rectangle(610, 600));
+            placements4.Add(new Placement(new Rectangle(750, 600));
             // Direita-Cima
-            placements4.Add(new Placement(new Rectangle(1825, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1685, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1545, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1405, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1275, 420, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1135, 420, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(1825, 420));
+            placements4.Add(new Placement(new Rectangle(1685, 420));
+            placements4.Add(new Placement(new Rectangle(1545, 420));
+            placements4.Add(new Placement(new Rectangle(1405, 420));
+            placements4.Add(new Placement(new Rectangle(1275, 420));
+            placements4.Add(new Placement(new Rectangle(1135, 420));
             // Direita-Baixo
-            placements4.Add(new Placement(new Rectangle(1825, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1685, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1545, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1405, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1275, 600, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1135, 600, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(1825, 600));
+            placements4.Add(new Placement(new Rectangle(1685, 600));
+            placements4.Add(new Placement(new Rectangle(1545, 600));
+            placements4.Add(new Placement(new Rectangle(1405, 600));
+            placements4.Add(new Placement(new Rectangle(1275, 600));
+            placements4.Add(new Placement(new Rectangle(1135, 600));
             // Cima-Esquerda
-            placements4.Add(new Placement(new Rectangle(840, 20, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 120, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 220, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 320, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(840, 20));
+            placements4.Add(new Placement(new Rectangle(840, 120));
+            placements4.Add(new Placement(new Rectangle(840, 220));
+            placements4.Add(new Placement(new Rectangle(840, 320));
             // Cima-Direta
-            placements4.Add(new Placement(new Rectangle(1025, 20, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 120, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 220, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 320, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(1025, 20));
+            placements4.Add(new Placement(new Rectangle(1025, 120));
+            placements4.Add(new Placement(new Rectangle(1025, 220));
+            placements4.Add(new Placement(new Rectangle(1025, 320));
             // Baixo-Esquerda
-            placements4.Add(new Placement(new Rectangle(840, 1000, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 900, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 800, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(840, 700, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(840, 1000));
+            placements4.Add(new Placement(new Rectangle(840, 900));
+            placements4.Add(new Placement(new Rectangle(840, 800));
+            placements4.Add(new Placement(new Rectangle(840, 700));
             // Baixo-Direita
-            placements4.Add(new Placement(new Rectangle(1025, 1000, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 900, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 800, placementWidth, placementHeight)));
-            placements4.Add(new Placement(new Rectangle(1025, 700, placementWidth, placementHeight)));
+            placements4.Add(new Placement(new Rectangle(1025, 1000));
+            placements4.Add(new Placement(new Rectangle(1025, 900));
+            placements4.Add(new Placement(new Rectangle(1025, 800));
+            placements4.Add(new Placement(new Rectangle(1025, 700));
 
             #endregion
 
@@ -437,7 +454,7 @@ namespace pokemon_towerdefense
                         g.Clear(Color.Black);
                         g.DrawString("GAME PAUSED", new Font("Press Start 2P", 16, FontStyle.Regular), Brushes.White, new PointF(PbScreen.Width / 2 - 120, PbScreen.Height / 3 - 100));
 
-                        RoundedRect roundedRect = new RoundedRect();
+                        roundedRect = new RoundedRect();
                         var backBtn = roundedRect.setRect(PbScreen.Width / 2 - 140, PbScreen.Height / 2 - 150, 280, 80);
                         g.FillPath(Brushes.Red, backBtn);
 
@@ -533,7 +550,7 @@ namespace pokemon_towerdefense
                         }
 
                         // BACK INVENTORY BUTTON
-                        RoundedRect roundedRect = new RoundedRect();
+                        roundedRect = new RoundedRect();
                         GraphicsPath invRect = roundedRect.setRect(1540, 977, 179, 60);
                         g.FillPath(Brushes.Red, invRect);
                         g.DrawString("Voltar", new Font("Press Start 2P", 12, FontStyle.Regular), Brushes.White, new PointF(1580, 998));
@@ -655,7 +672,7 @@ namespace pokemon_towerdefense
                     phases[actualPhase].GameOver = true;
                     // DRAW INFO PHASES AND WAVES
                     if (phases[actualPhase].GameOver)
-                        {
+                    {
                         #region GameOver Show and Set Items
 
                         g.DrawString("Game Over!", new Font("Press Start 2P", (float)(0.07 * (PbScreen.Width / 2 - (PbScreen.Width/10))), FontStyle.Bold), Brushes.Red, new PointF(PbScreen.Width / 2 - (float)(PbScreen.Width/5.5), PbScreen.Height / 2));
@@ -1095,6 +1112,18 @@ namespace pokemon_towerdefense
             SoundPlayer simpleSound = new SoundPlayer(@"assets\Battle_Theme.wav");
             simpleSound.PlayLooping();
             
+        }
+
+        private Placement GetPlacement(double val1, double val2)
+        {
+            double proportionalWidth = windowSize.Width / 1920.0;
+            double proportionalHeight = windowSize.Height / 1040.0;
+
+            int placementWidth = 50, placementHeight = 55;
+
+            Placement placement =  new Placement(new Rectangle(Convert.ToInt16(val1 * proportionalWidth), Convert.ToInt16(val2 * proportionalHeight));
+
+            return placement;
         }
     }
 }

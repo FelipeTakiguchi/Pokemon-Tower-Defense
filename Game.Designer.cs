@@ -28,19 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PbScreen = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.PbScreen)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // PbScreen
-            // 
-            this.PbScreen.BackColor = System.Drawing.Color.Transparent;
-            this.PbScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PbScreen.Location = new System.Drawing.Point(-5, 0);
-            this.PbScreen.Name = "PbScreen";
-            this.PbScreen.Size = new System.Drawing.Size(1928, 1097);
-            this.PbScreen.TabIndex = 6;
-            this.PbScreen.TabStop = false;
             // 
             // Game
             // 
