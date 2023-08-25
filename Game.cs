@@ -86,10 +86,10 @@ namespace pokemon_towerdefense
 
             // Background to Simule Retry Button on Game Over
             RoundedRect BackRetryRect = new RoundedRect();
-            BackRetryRect.setRect(PbScreen.Width / 2 - (PbScreen.Width / 20), PbScreen.Height / 2 + (PbScreen.Height / 20), PbScreen.Width / 10, PbScreen.Height / 18);
+            BackRetryRect.setRect((int)(ConvertProportionalWidth(windowSize.Width / 2) - (60 * proportionalWidth)),(int)(ConvertProportionalHeight(windowSize.Height / 2) + (100 * proportionalHeight)), ConvertProportionalWidth(160), ConvertProportionalHeight(70));
 
             // Retry Rectangle to get Size to Retry Text Button
-            Rectangle RetryRectangle = new Rectangle(PbScreen.Width / 2 - (PbScreen.Width / 20), PbScreen.Height / 2 + (PbScreen.Height / 20), PbScreen.Width / 10, PbScreen.Height / 18);
+            Rectangle RetryRectangle = new Rectangle((int)(ConvertProportionalWidth(windowSize.Width/2) - (60 * proportionalWidth)), (int)(ConvertProportionalHeight(windowSize.Height / 2) + (100 * proportionalHeight)), ConvertProportionalWidth(160), ConvertProportionalHeight(70));
             
             // BackGround to Simule Next Phase Button
             RoundedRect nextPhaseButton = null;
@@ -108,7 +108,7 @@ namespace pokemon_towerdefense
             for (int i = 0; i < 4; i++)
             {
                 RoundedRect rndRect = new RoundedRect();
-                SpeedControlRectangles.Add(rndRect.setRect(Convert.ToInt16(20 * (proportionalWidth) + (80 * (proportionalWidth) * i)), windowSize.Height - (windowSize.Height / 40), Convert.ToInt16(65 * (proportionalWidth)), Convert.ToInt16(60 * (proportionalHeight))));
+                SpeedControlRectangles.Add(rndRect.setRect(Convert.ToInt16(205 * (proportionalWidth) + (90 * (proportionalWidth) * i)), windowSize.Height - (windowSize.Height / 21), Convert.ToInt16(55 * (proportionalWidth)), Convert.ToInt16(55 * (proportionalHeight))));
             }
 
             #endregion
@@ -665,17 +665,16 @@ namespace pokemon_towerdefense
                                 g.DrawImage(
                                     pokeball.BmpClosed,
                                     Cursor.Position.X - (pokeball.Width / 2),
-                                    Cursor.Position.Y - (pokeball.Height / 2)
+                                     Cursor.Position.Y - (pokeball.Height / 2)
                                 );
                             }
                         }
-                    phases[actualPhase].GameOver = true;
                     // DRAW INFO PHASES AND WAVES
                     if (phases[actualPhase].GameOver)
                     {
                         #region GameOver Show and Set Items
 
-                        g.DrawString("Game Over!", new Font("Press Start 2P", (float)(0.07 * (PbScreen.Width / 2 - (PbScreen.Width/10))), FontStyle.Bold), Brushes.Red, new PointF(PbScreen.Width / 2 - (float)(PbScreen.Width/5.5), PbScreen.Height / 2));
+                        g.DrawString("Game Over!", new Font("Press Start 2P", Convert.ToInt16(64 * (Convert.ToDouble(proportionalWidth) / Convert.ToDouble(proportionalHeight))), FontStyle.Bold), Brushes.Red, new Point(ConvertProportionalWidth((windowSize.Width - (int)(460 * proportionalWidth))/2), ConvertProportionalHeight(windowSize.Height/2)));
                         
                         g.FillPath(Brushes.Black, BackRetryRect.path);
 
@@ -683,7 +682,7 @@ namespace pokemon_towerdefense
                         format.Alignment = StringAlignment.Center;
                         format.LineAlignment = StringAlignment.Center;
                         
-                        g.DrawString("RETRY", new Font("Press Start 2P", (float)(0.02 * RetryRectangle.Location.X), FontStyle.Bold), Brushes.Red, RetryRectangle, format);
+                        g.DrawString("RETRY", new Font("Press Start 2P", Convert.ToInt16(18 * (Convert.ToDouble(proportionalWidth) / Convert.ToDouble(proportionalHeight))), FontStyle.Bold), Brushes.Red, RetryRectangle, format);
                         
                         #endregion
                     }
