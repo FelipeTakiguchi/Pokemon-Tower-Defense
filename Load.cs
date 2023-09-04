@@ -13,6 +13,9 @@ namespace pokemon_towerdefense
 {
     public partial class Load : Form
     {
+        // Get Screen Size Resolution
+        Size windowSize = Screen.PrimaryScreen.WorkingArea.Size;
+
         public Load()
         {
             InitializeComponent();
@@ -22,6 +25,8 @@ namespace pokemon_towerdefense
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.arcanine.Width = ConvertProportionalWidth(700);
+            this.arcanine.Height = ConvertProportionalHeight(500);
             this.panel1.Location = new Point((this.Width / 2 - (this.panel1.Width / 2)), ((this.Height / 2) - (this.panel1.Height / 2)));
             this.arcanine.Location = new Point((this.Width - this.arcanine.Width), this.Height - this.arcanine.Height);
             this.logo.Location = new Point((this.Width / 2) - this.logo.Width / 2, ((this.Height / 3 - 100) - this.logo.Height / 2));
@@ -52,6 +57,19 @@ namespace pokemon_towerdefense
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+        private int ConvertProportionalWidth(int value)
+        {
+            double proportionalWidth = windowSize.Width / 1920.0;
+
+            return Convert.ToInt16(Convert.ToDouble(value) * proportionalWidth);
+        }
+
+        private int ConvertProportionalHeight(int value)
+        {
+            double proportionalHeight = windowSize.Height / 1040.0;
+
+            return Convert.ToInt16(Convert.ToDouble(value) * proportionalHeight);
         }
     }
 }

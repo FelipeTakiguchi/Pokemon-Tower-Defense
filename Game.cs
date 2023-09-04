@@ -100,7 +100,7 @@ namespace pokemon_towerdefense
 
             // BackGround to Speed Control Buttons Family
             roundedRect = new RoundedRect();
-            var SpeedControlBackground = roundedRect.setRect(12, 986, 526, 63);
+            var SpeedControlBackground = roundedRect.setRect(ConvertProportionalWidth(12), ConvertProportionalHeight(986), ConvertProportionalWidth(526), ConvertProportionalHeight(63));
 
             // List to get Speed Control Small Buttons
             List<GraphicsPath> SpeedControlRectangles = new List<GraphicsPath>();
@@ -116,21 +116,21 @@ namespace pokemon_towerdefense
             #region List of Points (Phase Path)
             List<List<Point>> path1 = new List<List<Point>>();
             List<Point> path1_1 = new List<Point>();
-            path1_1.Add(new Point(570, -100));
-            path1_1.Add(new Point(570, 550));
-            path1_1.Add(new Point(1330, 550));
-            path1_1.Add(new Point(1330, 1000));
+            path1_1.Add(new Point(ConvertProportionalWidth(570), ConvertProportionalHeight(-100)));
+            path1_1.Add(new Point(ConvertProportionalWidth(570), ConvertProportionalHeight(550)));
+            path1_1.Add(new Point(ConvertProportionalWidth(1330), ConvertProportionalHeight(550)));
+            path1_1.Add(new Point(ConvertProportionalWidth(1330), ConvertProportionalHeight(1000)));
 
             path1.Add(path1_1);
 
             List<Point> path2_1 = new List<Point>();
-            path2_1.Add(new Point(850, 1150));
-            path2_1.Add(new Point(850, 680));
-            path2_1.Add(new Point(550, 680));
-            path2_1.Add(new Point(550, 340));
-            path2_1.Add(new Point(1150, 340));
-            path2_1.Add(new Point(1150, 680));
-            path2_1.Add(new Point(1650, 680));
+            path2_1.Add(new Point(ConvertProportionalWidth(850), ConvertProportionalHeight(1150)));
+            path2_1.Add(new Point(ConvertProportionalWidth(850), ConvertProportionalHeight(680)));
+            path2_1.Add(new Point(ConvertProportionalWidth(550), ConvertProportionalHeight(680)));
+            path2_1.Add(new Point(ConvertProportionalWidth(550), ConvertProportionalHeight(340)));
+            path2_1.Add(new Point(ConvertProportionalWidth(1150), ConvertProportionalHeight(340)));
+            path2_1.Add(new Point(ConvertProportionalWidth(1150), ConvertProportionalHeight(680)));
+            path2_1.Add(new Point(ConvertProportionalWidth(1650), ConvertProportionalHeight(680)));
 
             List<Point> path2_2 = new List<Point>();
             path2_2.Add(new Point(-100, 680));
@@ -606,7 +606,7 @@ namespace pokemon_towerdefense
                             // RARE CANDIES
                             phases[actualPhase].RareCandies.ForEach(r =>
                             {
-                                g.DrawImage(r.Sprite, ConvertProportionalWidth(r.Position.X), ConvertProportionalHeight(r.Position.Y));
+                                g.DrawImage(r.Sprite, r.Position.X, r.Position.Y);
                             });
                         }
 
@@ -619,7 +619,7 @@ namespace pokemon_towerdefense
                             // RARE CANDIES
                             phases[actualPhase].RareCandies.ForEach(r =>
                             {
-                                g.DrawImage(r.Sprite, ConvertProportionalWidth(r.Position.X), ConvertProportionalHeight(r.Position.Y));
+                                g.DrawImage(r.Sprite, r.Position.X, r.Position.Y);
                             });
 
                             g.DrawImage(
@@ -749,7 +749,7 @@ namespace pokemon_towerdefense
                                     else
                                         g.FillPath(brushBlackOpacity, path);
 
-                                g.DrawString(name, new Font("Press Start 2P", Convert.ToInt16(8.0 * (Convert.ToDouble(proportionalWidth) / Convert.ToDouble(proportionalHeight))), FontStyle.Regular), Brushes.White, new PointF(Convert.ToInt16((110.0 * proportionalWidth) + (i * (215.0 * proportionalWidth)) * proportionalWidth), Convert.ToInt16(740.0 * proportionalHeight)));
+                                g.DrawString(name, new Font("Press Start 2P", ConvertFontSize(8), FontStyle.Regular), Brushes.White, new PointF(Convert.ToInt16((110.0 * proportionalWidth) + (i * (215.0 * proportionalWidth)) * proportionalWidth), Convert.ToInt16(740.0 * proportionalHeight)));
                                 g.DrawString("Lv " + level, new Font("Press Start 2P", Convert.ToInt16(8 * (Convert.ToDouble(proportionalWidth) / Convert.ToDouble(proportionalHeight))), FontStyle.Regular), Brushes.Red, new PointF(Convert.ToInt16((220.0 * proportionalWidth) + (i * (215.0 * proportionalWidth))), Convert.ToInt16(760.0 * proportionalHeight)));
                                     DrawXpBar(xp, Convert.ToInt16((110.0 * proportionalWidth) + (i * (215.0 * proportionalWidth))), Convert.ToInt16(920.0 * proportionalHeight), xpEvolve);
                                 }
@@ -761,7 +761,7 @@ namespace pokemon_towerdefense
                                 }
                                 else if (grabbed == -1)
                                 {
-                                    Rectangle destRect = new Rectangle(135 + (i * 215), 785, 130, 120);
+                                    Rectangle destRect = new Rectangle(ConvertProportionalWidth(135) + ConvertProportionalWidth(i * 215), ConvertProportionalHeight(785), ConvertProportionalWidth(130), ConvertProportionalHeight(120));
                                     g.DrawImage(sprite, destRect, 3, 6, 59, 55, GraphicsUnit.Pixel);
                                 }
                             }
@@ -777,7 +777,7 @@ namespace pokemon_towerdefense
 
                         // SPEED CONTROL
                         g.FillPath(Brushes.Black, SpeedControlBackground);
-                        g.DrawString("Speed", new Font("Press Start 2P", 24F, FontStyle.Regular), Brushes.White, new PointF(17, 1000));
+                        g.DrawString("Speed", new Font("Press Start 2P", ConvertFontSize(24), FontStyle.Regular), Brushes.White, new PointF(ConvertProportionalWidth(17), ConvertProportionalHeight(1000)));
 
                         for (int i = 0; i < 4; i++)
                         {
@@ -792,7 +792,7 @@ namespace pokemon_towerdefense
                             else
                                 text = $"{n}X";
 
-                            g.DrawString(text, new Font("Press Start 2P", 14F, FontStyle.Regular), Brushes.White, new PointF(215 + (90 * i), 1008));
+                            g.DrawString(text, new Font("Press Start 2P", ConvertFontSize(14), FontStyle.Regular), Brushes.White, new PointF(ConvertProportionalWidth(215) + (ConvertProportionalWidth(90) * i), ConvertProportionalHeight(1008)));
                         }
                     }
 
@@ -979,8 +979,8 @@ namespace pokemon_towerdefense
                 string readText = File.ReadAllText(fullPath);
             }
 
-            if (e.Location.X >= pokeball.Location.X && e.Location.X < (pokeball.Location.X + pokeball.Width) &&
-                e.Location.Y >= pokeball.Location.Y && e.Location.Y < (pokeball.Location.Y + pokeball.Height))
+            if (e.Location.X >= ConvertProportionalWidth(pokeball.Location.X) && e.Location.X < (ConvertProportionalWidth(pokeball.Location.X) + ConvertProportionalWidth(pokeball.Width)) &&
+                e.Location.Y >= ConvertProportionalHeight(pokeball.Location.Y) && e.Location.Y < (ConvertProportionalHeight(pokeball.Location.Y) + ConvertProportionalHeight(pokeball.Height)))
             {
                 pokeball.isDragging = true;
             }
@@ -993,8 +993,8 @@ namespace pokemon_towerdefense
                     {
                         if (!this.selfPokemons[i].IsPlaced)
                         {
-                            if (e.Location.X >= 125 + (i * 215) && e.Location.X < 275 + (i * 215) &&
-                            e.Location.Y >= 780 && e.Location.Y < 930)
+                            if (e.Location.X >= ConvertProportionalWidth(125) + (i * ConvertProportionalWidth(215)) && e.Location.X < ConvertProportionalWidth(275) + (i * ConvertProportionalWidth(215)) &&
+                            e.Location.Y >= ConvertProportionalHeight(780) && e.Location.Y < ConvertProportionalHeight(930))
                             {
                                 grabbed = i;
                             }
@@ -1136,6 +1136,13 @@ namespace pokemon_towerdefense
             double proportionalHeight = windowSize.Height / 1040.0;
 
             return Convert.ToInt16(Convert.ToDouble(value) * proportionalHeight);
+        }
+        private int ConvertFontSize(int value)
+        {
+            double proportionalWidth = windowSize.Width / 1920.0;
+            double proportionalHeight = windowSize.Height / 1040.0;
+
+            return Convert.ToInt16(value * (Convert.ToDouble(proportionalWidth) / Convert.ToDouble(proportionalHeight)));
         }
     }
 }
