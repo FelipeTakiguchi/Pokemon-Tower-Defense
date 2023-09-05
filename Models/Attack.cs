@@ -64,7 +64,7 @@ namespace pokemon_towerdefense.Models
                     {
                         var proportion = Sprite.Width / Sprite.Height;
                         Rectangle rect = new Rectangle(StartPosition.X + Sprite.Height/2, StartPosition.Y + Sprite.Height/2,
-                            Convert.ToInt16(Sprite.Height * 1.5), Convert.ToInt16(Sprite.Height * 1.5));
+                            ProportionalSetter.ConvertProportionalWidth((int)(Sprite.Height * 1.5)), ProportionalSetter.ConvertProportionalHeight((int)(Sprite.Height * 1.5)));
                         g.DrawImage(Sprite, rect, Sprite.Height * Convert.ToInt16((SpriteIndex * proportion) / 8), 0, Sprite.Height, Sprite.Height, GraphicsUnit.Pixel);
                     }
                 }

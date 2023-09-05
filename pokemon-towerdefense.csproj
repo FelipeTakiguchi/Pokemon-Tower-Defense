@@ -111,6 +111,7 @@
     <Compile Include="Models\Pokemons\Totodile.cs" />
     <Compile Include="Models\Pokemons\Tyranitar.cs" />
     <Compile Include="Models\Pokemons\Zubat.cs" />
+    <Compile Include="Models\ProportionalSetter.cs" />
     <Compile Include="Models\RareCandy.cs" />
     <Compile Include="Models\Pokemons\Alakazam.cs" />
     <Compile Include="Models\Pokemons\Magikarp.cs" />

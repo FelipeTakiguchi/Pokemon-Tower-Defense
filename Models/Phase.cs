@@ -145,8 +145,9 @@ namespace pokemon_towerdefense.Models
             {
                 if (pokemon.IsAlive)
                 {
-                    var lifeBack = new Rectangle(pokemon.Location.Value.X, pokemon.Location.Value.Y - 8, 70, 10);
-                    var lifeFront = new Rectangle(pokemon.Location.Value.X + 1, pokemon.Location.Value.Y - 7, Convert.ToInt16(0.68f * ((pokemon.ActualLife * 100) / pokemon.Life)), 8);
+                    var lifeBack = new Rectangle(pokemon.Location.Value.X, pokemon.Location.Value.Y - 8, ProportionalSetter.ConvertProportionalWidth(70), ProportionalSetter.ConvertProportionalHeight(10));
+                    var lifeFront = new Rectangle(pokemon.Location.Value.X + 1, pokemon.Location.Value.Y - 7, ProportionalSetter.ConvertProportionalWidth((int)(0.68f * ((pokemon.ActualLife * 100) / pokemon.Life))
+                        ), ProportionalSetter.ConvertProportionalHeight(8));
                     graphics.FillRectangle(Brushes.White, lifeBack);
 
                     if ((pokemon.ActualLife * 100) / pokemon.Life < 25)
@@ -183,8 +184,8 @@ namespace pokemon_towerdefense.Models
                     alives++;
 
                     Pokemon.Location
-                        = new Point(Pokemon.Location.Value.X + Pokemon.SpeedX,
-                        Pokemon.Location.Value.Y + Pokemon.SpeedY);
+                        = new Point(Pokemon.Location.Value.X + ProportionalSetter.ConvertProportionalWidth(Pokemon.SpeedX),
+                        Pokemon.Location.Value.Y + ProportionalSetter.ConvertProportionalHeight(Pokemon.SpeedY));
 
                     Pokemon.CollectCandy(RareCandies);
 

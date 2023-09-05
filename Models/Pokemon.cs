@@ -27,7 +27,7 @@ namespace pokemon_towerdefense.Models
         public Attack SelectedAttack {  get; protected set; }
         public List<Attack> Attacks { get; protected set; } = new List<Attack>();
         public Pokemon Evolution = null;
-        public int Range = 300;
+        public int Range = ProportionalSetter.ConvertFontSize(300);
         public Pokemon target = null;
 
         public Bitmap Sprite = null;
@@ -234,7 +234,7 @@ namespace pokemon_towerdefense.Models
                     line = 3;
             }
 
-            var pbRect = new Rectangle(Location.Value.X - 8, Location.Value.Y - 10, 66, 69);
+            var pbRect = new Rectangle(Location.Value.X - 8, Location.Value.Y - 10, ProportionalSetter.ConvertProportionalWidth(66), ProportionalSetter.ConvertProportionalHeight(69));
 
             if(this.isWild)
                 graphics.DrawImage(Sprite, pbRect, 3 + ((ActualImage % 4) * 64), 10 + (65 * line), 59, 55, GraphicsUnit.Pixel);
